@@ -35,7 +35,7 @@ if (req)
 } 
 else alert("Браузер не поддерживает AJAX");
 }
-setInterval(showClock, 3600); 
+setInterval(showClock, 216000); 
 
 
 // function clock() {
