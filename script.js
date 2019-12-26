@@ -1,11 +1,14 @@
-
-
+var d = new Date(),
+    hours = d.getHours(),
+    minutes = d.getMinutes();
+// if (hours <= 9) hours = "0" + hours;
+// if (minutes <= 9) minutes = "0" + minutes;
+document.getElementById('clock').innerHTML = 'Текущее время '+ hours + ':' + minutes;
 
 function showClock()
 {
 var obj = document.getElementById('clock');
 var req;
- 
 if (window.XMLHttpRequest)	req = new XMLHttpRequest();
 else if(window.ActiveXObject)
 {
@@ -16,7 +19,6 @@ else if(window.ActiveXObject)
         req = new ActiveXObject('Microsoft.XMLHTTP');
     } catch (e){}
 };
- 
 if (req) 
 {
     req.onreadystatechange = function() 
@@ -33,7 +35,6 @@ if (req)
 } 
 else alert("Браузер не поддерживает AJAX");
 }
- 
 setInterval(showClock, 3600); 
 
 
