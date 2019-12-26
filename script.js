@@ -25,7 +25,7 @@ if (req)
 	{
     	if (req.readyState == 4 && req.status == 200)  
 		{ 
-            tm = JSON.parse(req.responseText).datetime.substr(12,4);
+            tm = JSON.parse(req.responseText).datetime.substr(11,5);
             
             obj.innerHTML = 'Текущее время '+ tm; }        
     };  
