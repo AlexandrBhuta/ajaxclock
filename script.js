@@ -98,3 +98,14 @@ var interval = setInterval(runTheClock, 1000);
 let daten =  d;
 let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 document.getElementById('local_data').innerHTML = (daten.toLocaleString('ru-RU', options));
+
+var session = "AM";
+  if(hours == 0){
+        hours = 12;
+    }
+    
+    if(hours > 12){
+        hours = hours - 12;
+        session = "PM";
+    }
+    
