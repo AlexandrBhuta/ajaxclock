@@ -3,7 +3,7 @@ var d = new Date(),
     minutes = d.getMinutes();
 if (hours <= 9) hours = "0" + hours;
 if (minutes <= 9) minutes = "0" + minutes;
-document.getElementById('clock').innerHTML = 'Текущее время '+ hours + ':' + minutes;
+document.getElementById('clock').innerHTML = ''+ hours + ':' + minutes;
 
 function showClock()
 {
@@ -27,7 +27,7 @@ if (req)
 		{ 
             tm = JSON.parse(req.responseText).datetime.substr(11,5);
             
-            obj.innerHTML = 'Текущее время '+ tm; }        
+            obj.innerHTML = ''+ tm; }        
     };  
     req.open("GET", 'https://worldtimeapi.org/api/ip', true);
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
