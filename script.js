@@ -25,7 +25,9 @@ if (req)
 	{
     	if (req.readyState == 4 && req.status == 200)  
 		{ 
-            tm = JSON.parse(req.responseText).datetime.substr(11,5);
+            parsing = JSON.parse(req.responseText);
+            console.log(parsing);
+            tm = parsing.datetime.substr(11,5);
             
             obj.innerHTML = ''+ tm; }        
     };  
@@ -93,3 +95,8 @@ function runTheClock() {
 }
 
 var interval = setInterval(runTheClock, 1000);
+
+// let date = new Date2(Date.UTC(2019, 12, 26, 3, 0, 0));
+let daten =  d;
+let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+console.log(daten.toLocaleString('ru-RU', options));
