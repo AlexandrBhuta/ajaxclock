@@ -93,10 +93,8 @@ function runTheClock() {
     SECONDHAND.style.transform = "rotate(" + secPosition + "deg)";
 
 }
-
 var interval = setInterval(runTheClock, 1000);
 
-// let date = new Date2(Date.UTC(2019, 12, 26, 3, 0, 0));
 let daten =  d;
 let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-console.log(daten.toLocaleString('ru-RU', options));
+document.getElementById('local_data').innerHTML = (daten.toLocaleString('ru-RU', options));
