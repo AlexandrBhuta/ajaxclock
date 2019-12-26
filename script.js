@@ -29,7 +29,7 @@ if (req)
             
             obj.innerHTML = 'Текущее время '+ tm; }        
     };  
-    req.open("GET", 'http://worldtimeapi.org/api/ip', true);
+    req.open("GET", 'https://worldtimeapi.org/api/ip', true);
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     req.send('clock=1');
 } 
