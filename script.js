@@ -37,7 +37,9 @@ if (req)
 } 
 else alert("Браузер не поддерживает AJAX");
 }
+
 setInterval(showClock, 216000); 
+
 
 
 // function clock() {
@@ -95,6 +97,7 @@ function runTheClock() {
 }
 var interval = setInterval(runTheClock, 1000);
 
+
 let daten =  d;
 let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 document.getElementById('local_data').innerHTML = (daten.toLocaleString('ru-RU', options));
@@ -108,4 +111,4 @@ var session = "AM";
         hours = hours - 12;
         session = "PM";
     }
-    
+
