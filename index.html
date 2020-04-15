@@ -1,70 +1,103 @@
 <!doctype html>
 <html lang="ru">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    
     <title>AJAX clock</title>
-  </head>
-  <body>
-    
-    
-    
-
+</head>
+<body>
     <!-- Nav tabs -->
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#home">Первая часть</a>
-            </li>
-            <li class="nav-item">
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#menu1">Вторая Часть</a>
-            </li>
-            <li class="nav-item">
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#menu2">Аналоговые часы</a>
-            </li>
-        </ul>
-        
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane active container" id="home"><div id="clock">Time from Server</div></div>
-            <div class="tab-pane container" id="menu1">...</div>
-            <div class="tab-pane container" id="menu2">
-                <main class="main">
-                    <div class="clockbox">
-                        <svg id="clock" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
-                            <g id="face">
-                                <circle class="circle" cx="300" cy="300" r="253.9"/>
-                                <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6"/>
-                                <circle class="mid-circle" cx="300" cy="300" r="16.2"/>
-                            </g>
-                            <g id="hour">
-                                <path class="hour-arm" d="M300.5 298V142"/>
-                                <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-                            </g>
-                            <g id="minute">
-                                <path class="minute-arm" d="M300.5 298V67"/>
-                                <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-                            </g>
-                            <g id="second">
-                                <path class="second-arm" d="M300.5 350V55"/>
-                                <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-                            </g>
-                        </svg>
-                    </div><!-- .clockbox -->
-                </main>
+        </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active container" id="home">
+            <div class="row">
+                <div class="col-12">
+                    <div id="clock">Time from Server</div>
+                </div>
             </div>
         </div>
-    
+        <div class="tab-pane container" id="menu1">
+            <div class="col-6">
+                <div class="input-group">
+                    <select class="custom-select" id="inputGroupSelect04">
+                        <option selected>Выберите город</option>
+                        <option value="1">Санкт-Петербург</option>
+                        <option value="2">Лондон</option>
+                        <option value="3">Нью-йорк</option>
+                    </select>
+                    <!-- <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" type="button">Выбрать</button>
+                        </div> -->
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="input-group">
+                    <select class="custom-select" id="inputGroupSelect04">
+                        <option selected>Выберите 12/24 часа</option>
+                        <option value="1">12</option>
+                        <option value="2">24</option>
+                    </select>
+                    <!-- <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="button">Выбрать</button>
+                            </div> -->
+                </div>
+            </div>
+            <br>
+            <div id="local_data"></div>
+        </div>
+        <div class="tab-pane container" id="menu2">
+            <main class="main">
+                <div class="clockbox">
+                    <svg id="clock2" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+                        <g id="face">
+                            <circle class="circle" cx="300" cy="300" r="253.9" />
+                            <path class="hour-marks"
+                                d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6" />
+                            <circle class="mid-circle" cx="300" cy="300" r="16.2" />
+                        </g>
+                        <g id="hour">
+                            <path class="hour-arm" d="M300.5 298V142" />
+                            <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+                        </g>
+                        <g id="minute">
+                            <path class="minute-arm" d="M300.5 298V67" />
+                            <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+                        </g>
+                        <g id="second">
+                            <path class="second-arm" d="M300.5 350V55" />
+                            <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+                        </g>
+                    </svg>
+                </div><!-- .clockbox -->
+            </main>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
-    
     <script src="script.js"></script><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
 </html>

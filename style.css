@@ -20,7 +20,7 @@
 }
 
 .clockbox,
-#clock {
+#clock, #clock2 {
     width: 100%;
 }
 
@@ -76,3 +76,19 @@
     transform-origin: 300px 300px;
     transition: transform .5s ease-in-out;
 }
+#clock {
+    max-height: 145px;
+    background-color: #111;
+    border-radius: 10px;
+    max-width: 290px;
+    margin: 0 auto;
+    padding-left: 18px;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+    transform: translate(0, 50%);
+    transition: all 500ms cubic-bezier(0.6,0.7,0.9,1);
+    color: red;
+    font-family: "Century Gothic";
+    font-weight: 100;
+    font-size: 100px;
+    text-shadow: 0 0 60px rgba(255,0,0,1);
+  }

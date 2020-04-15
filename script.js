@@ -3,7 +3,7 @@ var d = new Date(),
     minutes = d.getMinutes();
 if (hours <= 9) hours = "0" + hours;
 if (minutes <= 9) minutes = "0" + minutes;
-document.getElementById('clock').innerHTML = 'Текущее время '+ hours + ':' + minutes;
+document.getElementById('clock').innerHTML = ''+ hours + ':' + minutes;
 
 function showClock()
 {
@@ -25,9 +25,11 @@ if (req)
 	{
     	if (req.readyState == 4 && req.status == 200)  
 		{ 
-            tm = JSON.parse(req.responseText).datetime.substr(11,5);
+            parsing = JSON.parse(req.responseText);
+            console.log(parsing);
+            tm = parsing.datetime.substr(11,5);
             
-            obj.innerHTML = 'Текущее время '+ tm; }        
+            obj.innerHTML = ''+ tm; }        
     };  
     req.open("GET", 'https://worldtimeapi.org/api/ip', true);
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -35,7 +37,9 @@ if (req)
 } 
 else alert("Браузер не поддерживает AJAX");
 }
-setInterval(showClock, 7200); 
+
+setInterval(showClock, 216000); 
+
 
 
 // function clock() {
@@ -91,5 +95,20 @@ function runTheClock() {
     SECONDHAND.style.transform = "rotate(" + secPosition + "deg)";
 
 }
-
 var interval = setInterval(runTheClock, 1000);
+
+
+let daten =  d;
+let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+document.getElementById('local_data').innerHTML = (daten.toLocaleString('ru-RU', options));
+
+var session = "AM";
+  if(hours == 0){
+        hours = 12;
+    }
+    
+    if(hours > 12){
+        hours = hours - 12;
+        session = "PM";
+    }
+
